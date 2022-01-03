@@ -1,0 +1,27 @@
+{
+  "name": "dd-react",
+  "version": "1.0.0",
+  "description": "Library for drag and drop",
+  "repository": "https://github.com/FlowAssist/dd-react.git",
+  "author": "Krit Bannachaisirisuk <gmkipladen@gmail.com>",
+  "license": "MIT",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.5.4"
+  }
+}
