@@ -9,6 +9,7 @@
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "scripts": {
+    "dev": "nodemon -e ts,tsx -w ./src -x npm run build",
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs"
@@ -20,8 +21,17 @@
   "devDependencies": {
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.5.4"
+  },
+  "nodemonConfig": {
+    "ignore": ["*.test.(ts|tsx)$", "example/*"],
+    "delay": 2500,
+    "execMap": {
+      "tsx": "npm run build",
+      "ts": "npm run build"
+    }
   }
 }
