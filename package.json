@@ -13,6 +13,7 @@
   },
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
+  "types": "./dist/main.d.ts",
   "files": [
     "dist"
   ],
@@ -55,6 +56,7 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@commitlint/cz-commitlint": "^15.0.0",
     "@cypress/vite-dev-server": "^2.2.2",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",

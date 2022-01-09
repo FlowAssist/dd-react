@@ -1,14 +1,17 @@
 // import legacy from "@vitejs/plugin-legacy"; not supported library mode yet
+import typescript from "@rollup/plugin-typescript";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import path from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 
+const resolvePath = (str: string) => path.resolve(__dirname, str);
+
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/lib/main.tsx"),
+      entry: path.resolve(__dirname, "src/main.tsx"),
       name: "dd-react",
       fileName: format => `index.${format}.js`,
     },
@@ -25,7 +28,17 @@ export default defineConfig({
       },
     },
   },
-  plugins: [reactRefresh()],
+  plugins: [
+    reactRefresh(),
+    typescript({
+      target: "es2020",
+      rootDir: resolvePath("src"),
+      declaration: true,
+      declarationDir: resolvePath("dist"),
+      exclude: resolvePath("node_modules/**"),
+      allowSyntheticDefaultImports: true,
+    }),
+  ],
   esbuild: {
     jsxInject: `import React from 'react'`, // automatically import React in jsx files
   },
